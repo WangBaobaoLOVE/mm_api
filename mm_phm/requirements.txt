@@ -1,0 +1,7 @@
+flask
+gunicorn
+gevent
+numpy
+sklearn
+tensorflow
+matplotlib
