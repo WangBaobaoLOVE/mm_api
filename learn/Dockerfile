@@ -4,7 +4,7 @@
 ##########################################################
 
 # Set the base image to use to centos
-FROM pp:3.0
+FROM image_base:1.0
 
 # Set the file maintainer
 MAINTAINER Wang Bobo,wbb392797665@sina.com
@@ -13,7 +13,7 @@ MAINTAINER Wang Bobo,wbb392797665@sina.com
 WORKDIR /usr/src/app
 
 # install python3 dependencies
-RUN pip3 install  -i https://mirrors.aliyun.com/pypi/simple/ gunicorn gevent 
+RUN pip3 install  -i https://mirrors.aliyun.com/pypi/simple/ flask gunicorn gevent 
 
 COPY . .
 
