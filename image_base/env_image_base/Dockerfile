@@ -1,6 +1,7 @@
 ##########################################################
 # Dockerfile to run a flask-based web application
 # Based on an centos:8.1.1911 image
+# Please name the image to env_image_base image
 ##########################################################
 
 # Set the base image to use to centos
