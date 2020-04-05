@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="王波波">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>help_pumpcheck</title>
+  
+  <link rel="stylesheet" href="./扫雷.css"> 
+ </head>
+
+ <body>
+
+    <p>
+这是对水泵的状态信息进行异常点判断，用的是三次多项式拟合的方法 <br><br>
+
+输入:	<br>
+path1:训练集的json文件的路径<br>
+path2:输入的需要判断的json文件的路径<br>
+其中：输入的数据是同一台水泵不同时刻的马达电流和温度两个参数，其中json文件必须满足[a,b,c,d,.....]，
+数据的个数必须是偶数个，马达电流在前，温度在后 <br><br>
+
+举例： json [1,2,3,4,5,5,4,3,2,1]，<br>
+前面的12345代表了5个时刻的马达电流，<br>
+后面的54321代表了5个时刻的温度<br>
+代表第一个时刻的马达电流和温度分别为第一位1和第六位的5<br>
+第二个时刻的马达电流和温度分别为第二位的2和第7位的4，依次类推<br><br>
+
+输出是保存在同一根目录下的result.json，代表了不同时刻水泵的状态情况，1代表可能存在潜在的故障，0代表正常<br>
+如   输出的result为 [0,0,1,0,0]  代表第三个时刻可能存在异常，其他时刻正常<br><br>
+
+    :param path1:训练集的json文件的路径<br>
+    :param path2:输入的需要判断的json文件的路径<br>
+    :return: 如果成功运行，会返回True值<br>
+</p>
+
+ </body>
+
+ <script src="./扫雷.js"></script>
+
+</html>

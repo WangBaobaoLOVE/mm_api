@@ -1,31 +1,14 @@
 import json
 import numpy as np
-from flask import Flask,jsonify
+from flask import Flask,jsonify,request,render_template,send_file
 
 app = Flask(__name__)
 
-@app.route('/apiv3/opendata/analyze/pumpcheck')
+@app.route('/apiv3/opendata/analyze/pumpcheck' ,methods=['GET', 'POST'])
 def pumpcheck():
-    """
-这是对水泵的状态信息进行异常点判断，用的是三次多项式拟合的方法
-
-输入:	path1:训练集的json文件的路径
-path2:输入的需要判断的json文件的路径
-其中：输入的数据是同一台水泵不同时刻的马达电流和温度两个参数，其中json文件必须满足[a,b,c,d,.....]，
-数据的个数必须是偶数个，马达电流在前，温度在后
-
-举例： json [1,2,3,4,5,5,4,3,2,1]，
-前面的12345代表了5个时刻的马达电流，后面的54321代表了5个时刻的温度
-代表第一个时刻的马达电流和温度分别为第一位1和第六位的5
-第二个时刻的马达电流和温度分别为第二位的2和第7位的4，依次类推
-
-输出是保存在同一根目录下的result.json，代表了不同时刻水泵的状态情况，1代表可能存在潜在的故障，0代表正常
-如   输出的result为 [0,0,1,0,0]  代表第三个时刻可能存在异常，其他时刻正常
-
-    :param path1:训练集的json文件的路径
-    :param path2:输入的需要判断的json文件的路径
-    :return: 如果成功运行，会返回True值
-    """
+    if request.method == 'GET':
+        return send_file('help_docs/help_pumpcheck.html')
+ 
     path1 = "pumpdata.json"
     path2 = "pumpdata.json"
     with open(path1, mode='r', encoding='UTF-8') as f:
