@@ -1,11 +1,11 @@
 ##########################################################
 # Dockerfile to run a flask-based web application
-# Based on an image_base:1.0 image
+# Based on an env_image_base:1.0 image
 # Please name the image to lib_image_base:1.0 image
 ##########################################################
 
 # Set the base image to use to centos
-FROM image_base:1.0
+FROM env_image_base:1.0
 
 # Set the file maintainer
 MAINTAINER Wang Bobo,wbb392797665@sina.com
