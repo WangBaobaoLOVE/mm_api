@@ -10,7 +10,7 @@ The basic functionality of this server is that maomeng using API supported by th
 
 ## Requirement
 
-For local deployment, the requirements are listed as follows.
+For local deployment, the requirements are listed as follows:
 
 - OS: Ubuntu 16.04+ (大部分主流linux系统,能够安装运行docker即可)
 - python, version 3.6.1+
@@ -25,7 +25,6 @@ Note:The above deployment environment has been tested, but we can not guarantee 
 ## Directory tree
 
 ![](./images/mm_api_tree.png)
-
 
 The above files are used directly in the README for explanation, so the directory tree is given here for user comparison.
 
@@ -74,39 +73,10 @@ The server will run a HTTP service on 8000 port by default, with RESTful API:
 http://127.0.0.1:8000/apiv3/opendata/analyze/pumpcheck , method = ['GET', 'POST']
 ```
 
+For request, if the method is `GET`, the server will return the API document (`html` format).
 
-For request, you need to insert the face image file in request body, with json format:
+For request, if the method is `POST`, the server will return the results after analyzing data (`json` format). You firstly need to insert machincal data in request body, with json format:
 
-``` 
-{
-  "top": 5,
-  "image": "ZXhjaXRlZA=="
-}
-```
-
-Here `top` is the number of most similar faces to response. `image` is the upload face image itself, encoded by Base64. Refer to unit test if you are ambiguous.
-
-The response will be included in response body, with json format:
-
-```
-{
-  "similar_faces": [
-    {
-      "faceID": "00001",
-      "similarity": 0.67,
-      "meta_data": {
-        "name": "张三",
-        "organization": "XX代表团",
-        "title": "全国人大代表"
-      }
-    }
-  ]
-}
-```
-
-Here `similarity` is the similarity score between the upload image and the image in cloud database. For a threshold, we recommend 0.66-0.71.
-
-More details can be found in file `%PROJECT_DIR%/sjtu-face.yaml`, declaring web API specification at the standard **OpenAPI 3.0**.
 
 ## Other Information
 
