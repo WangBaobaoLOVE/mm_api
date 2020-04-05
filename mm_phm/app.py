@@ -9,13 +9,14 @@ def pumpcheck():
     if request.method == 'GET':
         return send_file('help_docs/help_pumpcheck.html')
  
-    path1 = "pumpdata.json"
-    path2 = "pumpdata.json"
-    with open(path1, mode='r', encoding='UTF-8') as f:
-        Data1 = json.load(f)  # 将数据读入Data
-    with open(path2, mode='r', encoding='UTF-8') as f:
-        Data2 = json.load(f)
-
+    #path1 = "pumpdata.json"
+    #path2 = "pumpdata.json"
+    #with open(path1, mode='r', encoding='UTF-8') as f:
+        #Data1 = json.load(f)  # 将数据读入Data
+    #with open(path2, mode='r', encoding='UTF-8') as f:
+        #Data2 = json.load(f)
+    Data1 = request.get_json()
+    Data2 = Data1
     DataNum1 = len(Data1) / 2  # DataNum是样本个数的一半
     DataNum1 = int(DataNum1)  # 转为整数
     DataNum2 = len(Data2) / 2  # DataNum是样本个数的一半
